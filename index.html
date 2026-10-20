@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#12372a">
+<title>My Japa Planner</title>
+<style>
+:root{--green:#12372a;--mint:#d9eadf;--cream:#f7f7f0;--gold:#e5b95c;--ink:#202820;--muted:#667168;--white:#fff;--line:#dce4dc}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.55 system-ui,-apple-system,sans-serif}
+header{background:var(--green);color:white;padding:28px 20px 32px}
+header,.wrap{max-width:900px;margin:auto}
+header .eyebrow{color:#c9e0cf;font-size:.82rem;text-transform:uppercase;letter-spacing:1.5px}
+h1{font-size:clamp(1.8rem,6vw,2.7rem);line-height:1.15;margin:10px 0}
+header p{margin:8px 0;color:#e0ebe3}
+.wrap{padding:18px 14px 40px}
+.card{background:white;border:1px solid var(--line);border-radius:16px;padding:18px;margin:14px 0;box-shadow:0 3px 12px #12372a08}
+h2{font-size:1.22rem;margin:0 0 12px;color:var(--green)}
+h3{font-size:1rem;margin:15px 0 6px}
+.small,.muted{font-size:.88rem;color:var(--muted)}
+label{display:block;font-weight:650;font-size:.92rem;margin:12px 0 5px}
+input,select,textarea{font:inherit;width:100%;padding:12px;border:1px solid #cbd6cc;border-radius:9px;background:white;color:var(--ink)}
+button{font:inherit;font-weight:700;padding:12px 16px;border:0;border-radius:10px;background:var(--green);color:white;cursor:pointer}
+button.secondary{background:var(--mint);color:var(--green)}
+button.danger{background:#f9e5e2;color:#852f25}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat{background:var(--mint);border-radius:12px;padding:12px}
+.stat strong{display:block;font-size:1.35rem;color:var(--green)}
+progress{width:100%;height:12px;accent-color:var(--green)}
+.task{display:flex;gap:11px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--line)}
+.task:last-child{border:0}
+.task input{width:20px;height:20px;flex-shrink:0;margin-top:4px;accent-color:var(--green)}
+.task label{margin:0;font-weight:500;flex:1}
+.task strong{display:block}
+.tag{display:inline-block;font-size:.75rem;background:var(--mint);color:var(--green);padding:3px 8px;border-radius:20px;margin:3px 0}
+.notice{padding:13px;border-radius:10px;background:#fff4d8;border-left:4px solid var(--gold);margin:12px 0}
+.notice.red{background:#fbe8e5;border-color:#c95c4d}
+a{color:#176446;overflow-wrap:anywhere}
+.link{padding:12px 0;border-bottom:1px solid var(--line)}
+.link:last-child{border:0}
+.link strong{display:block}
+.cost{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.cost span:last-child{text-align:right;font-weight:650}
+footer{text-align:center;color:var(--muted);font-size:.8rem;padding:12px}
+@media(max-width:540px){.row{grid-template-columns:1fr}.stats{grid-template-columns:repeat(3,1fr)}.stat{padding:9px}.stat strong{font-size:1.1rem}.card{padding:15px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="eyebrow">Your personal relocation dashboard</div>
+  <h1>My Japa Planner 🌍</h1>
+  <p>A practical, step-by-step relocation tracker for a Nigerian Registered Nurse.</p>
+  <p class="small" style="color:#dce9df">NKST School of Nursing Mkar · RN · NMCN · No BSc/BSN</p>
+</header>
+
+<main class="wrap">
+  <section class="card">
+    <h2>01 · Your relocation profile</h2>
+    <p class="small">Edit these details as your situation changes. Your entries are saved in this browser on this device.</p>
+    <label for="name">Name or planner nickname</label>
+    <input id="name" data-save placeholder="My relocation plan">
+    <div class="row">
+      <div>
+        <label for="country">Target country</label>
+        <select id="country" data-save>
+          <option value="Australia">Australia</option>
+          <option value="Ireland">Ireland</option>
+          <option value="Canada">Canada</option>
+        </select>
+      </div>
+      <div>
+        <label for="route">Preferred route</label>
+        <select id="route" data-save>
+          <option>Employer-sponsored nursing job</option>
+          <option>Registration first, then job search</option>
+          <option>Skilled migration</option>
+          <option>Study route (only if financially realistic)</option>
+          <option>Compare all realistic routes</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label for="passport">International passport</label>
+        <select id="passport" data-save>
+          <option>Not yet obtained</option><option>Applied for</option><option>Have a valid passport</option>
+        </select>
+      </div>
+      <div>
+        <label for="english">English test</label>
+        <select id="english" data-save>
+          <option>Not taken</option><option>Preparing</option><option>Booked</option><option>Passed</option>
+        </select>
+      </div>
+    </div>
+    <label for="experience">Post-registration nursing experience</label>
+    <select id="experience" data-save>
+      <option>About 1 year</option><option>About 2 years</option><option>3 or more years</option>
+    </select>
+    <div class="notice">Important: a nursing-school qualification plus RN registration does not automatically guarantee overseas RN registration, a visa, or employer sponsorship. Your education and experience must be assessed under each country's rules.</div>
+  </section>
+
+  <section class="card">
+    <h2>02 · Progress dashboard</h2>
+    <div class="stats">
+      <div class="stat"><strong id="done">0</strong><span class="small">Completed</span></div>
+      <div class="stat"><strong id="total">0</strong><span class="small">Tasks</span></div>
+      <div class="stat"><strong id="percent">0%</strong><span class="small">Progress</span></div>
+    </div>
+    <progress id="bar" value="0" max="100"></progress>
+    <p class="small" id="progressText">Start with the passport and document checklist.</p>
+  </section>
+
+  <section class="card">
+    <h2>03 · Country-specific checklist</h2>
+    <p class="small">Tick each item only when it is genuinely completed. Tasks are saved separately for each country.</p>
+    <div id="checklist"></div>
+  </section>
+
+  <section class="card">
+    <h2>04 · Budget planner (NGN)</h2>
+    <p class="small">Use your own current quotes. Costs below are editable planning estimates, not guaranteed prices or a complete visa budget.</p>
+    <label for="savings">Current savings (₦)</label>
+    <input id="savings" type="number" min="0" data-save value="200000">
+    <label for="target">Your target budget (₦)</label>
+    <input id="target" type="number" min="0" data-save value="1000000">
+    <div class="row">
+      <div>
+        <label for="documents">Documents and verification (₦)</label>
+        <input id="documents" type="number" min="0" data-save value="100000">
+      </div>
+      <div>
+        <label for="englishCost">English test and preparation (₦)</label>
+        <input id="englishCost" type="number" min="0" data-save value="250000">
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label for="registrationCost">Registration and assessment (₦)</label>
+        <input id="registrationCost" type="number" min="0" data-save value="500000">
+      </div>
+      <div>
+        <label for="travelCost">Visa, travel and initial living costs (₦)</label>
+        <input id="travelCost" type="number" min="0" data-save value="1500000">
+      </div>
+    </div>
+    <div class="notice">
+      <div class="cost"><span>Estimated total costs</span><span id="totalCost">₦0</span></div>
+      <div class="cost"><span>Current savings</span><span id="savingsView">₦0</span></div>
+      <div class="cost"><span>Estimated funding gap</span><span id="gap">₦0</span></div>
+      <div class="cost"><span>Remaining after costs</span><span id="remaining">₦0</span></div>
+    </div>
+    <p class="small">These default figures are placeholders for planning, not official quotes. Replace them with verified fees and current exchange rates before making payments. The funding gap is the amount needed beyond your savings.</p>
+  </section>
+
+  <section class="card">
+    <h2>05 · Official registration resources</h2>
+    <div id="resources"></div>
+    <div class="notice red">Never pay an agent for a guaranteed job, visa, nursing registration, or exam pass. Verify recruitment and payment instructions through official websites.</div>
+  </section>
+
+  <section class="card">
+    <h2>06 · Your next action</h2>
+    <label for="nextAction">Write the single next step you will take</label>
+    <textarea id="nextAction" data-save rows="3" placeholder="Example: Request my official transcript and detailed clinical/theory hours from my nursing school."></textarea>
+    <label for="deadline">Target date</label>
+    <input id="deadline" data-save type="date">
+    <button id="saveBtn" style="margin-top:12px">Save my plan</button>
+    <button id="exportBtn" class="secondary" style="margin-top:12px">Export my checklist</button>
+    <button id="resetBtn" class="danger" style="margin-top:12px">Reset all saved data</button>
+    <p class="small" id="saveMessage" aria-live="polite"></p>
+  </section>
+  <footer>My Japa Planner · Personal planning tool, not immigration or legal advice.</footer>
+</main>
+
+<script>
+const tasks = {
+ Australia: [
+  ["Get or renew international passport","Personal documents"],
+  ["Request transcript, syllabus and theory/clinical hours","School documents"],
+  ["Collect RN certificate, NMCN registration and current licence","Professional documents"],
+  ["Request NMCN verification and certificate of good standing if required","Professional documents"],
+  ["Complete the official AHPRA/NMBA IQNM Self-check","Registration"],
+  ["Follow the assigned pathway and confirm qualification eligibility","Registration"],
+  ["Check current English language evidence requirements","English"],
+  ["Budget for required assessment stages, travel and accommodation","Budget"],
+  ["Research verified employers and eligible visa routes","Employment"],
+  ["Verify any job offer and written sponsorship details","Safety"]
+ ],
+ Ireland: [
+  ["Get or renew international passport","Personal documents"],
+  ["Request transcript, curriculum and clinical/theory hours","School documents"],
+  ["Collect RN certificate, NMCN registration and current licence","Professional documents"],
+  ["Request the documents NMBI needs directly from relevant authorities","Professional documents"],
+  ["Read NMBI's overseas qualification recognition guidance","Registration"],
+  ["Check your application group and required evidence","Registration"],
+  ["Check NMBI English language requirements and accepted tests","English"],
+  ["Budget for qualification recognition, registration and any compensation measures","Budget"],
+  ["Research legitimate employers and eligible employment permit routes","Employment"],
+  ["Wait for the relevant registration/employment decisions before committing to travel","Safety"]
+ ],
+ Canada: [
+  ["Get or renew international passport","Personal documents"],
+  ["Request transcript, curriculum and clinical/theory hours","School documents"],
+  ["Collect RN certificate, NMCN registration and current licence","Professional documents"],
+  ["Choose a province and read its nursing regulator's requirements","Registration"],
+  ["Check whether that regulator requires NNAS or another assessment route","Registration"],
+  ["Verify whether your qualification meets the province's RN education requirements","Registration"],
+  ["Check language, exam and competency assessment requirements","English and exams"],
+  ["Budget for assessment, regulator fees, exams and immigration costs","Budget"],
+  ["Research eligible employers and the appropriate immigration route","Employment"],
+  ["Check each offer, recruiter and immigration pathway through official sources","Safety"]
+ ]
+};
+const resources = {
+ Australia: [
+  ["AHPRA/NMBA: International applications","https://www.ahpra.gov.au/registration/international-applications.aspx"],
+  ["IQNM Self-check and assessment stages","https://www.nursingmidwiferyboard.gov.au/Accreditation/IQNM/Self-check-and-Portfolio/Steps-after-Self-check"],
+  ["Australian Department of Home Affairs","https://immi.homeaffairs.gov.au/"]
+ ],
+ Ireland: [
+  ["NMBI: Nurses qualified outside the EU","https://www.nmbi.ie/Registration/Qualified-outside-the-EU"],
+  ["NMBI: Registration fees","https://www.nmbi.ie/Registration/Registration-Fees"],
+  ["Irish employment permits","https://enterprise.gov.ie/en/what-we-do/workplace-and-skills/employment-permits/"]
+ ],
+ Canada: [
+  ["National Nursing Assessment Service (NNAS)","https://www.nnas.ca/"],
+  ["Government of Canada immigration","https://www.canada.ca/en/immigration-refugees-citizenship.html"],
+  ["Canadian nursing regulators directory","https://www.nnas.ca/"]
+ ]
+};
+const key = "myJapaPlanner_v1";
+let data = {};
+try { data = JSON.parse(localStorage.getItem(key) || "{}"); } catch(e) { data = {}; }
+function store(){ try { localStorage.setItem(key, JSON.stringify(data)); } catch(e) {} }
+function val(id){ return document.getElementById(id).value; }
+function money(n){ return "₦" + Math.round(n).toLocaleString("en-NG"); }
+function currentCountry(){ return val("country"); }
+function countryTasks(){ return data.tasksByCountry?.[currentCountry()] || {}; }
+function setTask(id,checked){
+ if(!data.tasksByCountry) data.tasksByCountry={};
+ if(!data.tasksByCountry[currentCountry()]) data.tasksByCountry[currentCountry()]={};
+ data.tasksByCountry[currentCountry()][id]=checked; store(); renderTasks();
+}
+function renderTasks(){
+ const list=document.getElementById("checklist"); list.innerHTML="";
+ tasks[currentCountry()].forEach((t,i)=>{
+  const id=currentCountry()+"_"+i, checked=!!countryTasks()[id];
+  const div=document.createElement("div"); div.className="task";
+  const box=document.createElement("input"); box.type="checkbox"; box.checked=checked; box.id=id;
+  box.addEventListener("change",()=>setTask(id,box.checked));
+  const label=document.createElement("label"); label.htmlFor=id;
+  const strong=document.createElement("strong"); strong.textContent=t[0];
+  const tag=document.createElement("span"); tag.className="tag"; tag.textContent=t[1];
+  label.append(strong,tag);
+  div.append(box,label); list.append(div);
+ });
+ const total=tasks[currentCountry()].length, done=Object.values(countryTasks()).filter(Boolean).length;
+ const pct=Math.round(done/total*100);
+ document.getElementById("done").textContent=done;
+ document.getElementById("total").textContent=total;
+ document.getElementById("percent").textContent=pct+"%";
+ document.getElementById("bar").value=pct;
+ document.getElementById("progressText").textContent=pct===100?"Checklist completed. Verify all requirements before acting.":`${total-done} tasks remain for ${currentCountry()}. Focus on one next action at a time.`;
+}
+function renderResources(){
+ const box=document.getElementById("resources"); box.innerHTML="";
+ resources[currentCountry()].forEach(r=>{
+  const div=document.createElement("div"); div.className="link";
+  const a=document.createElement("a"); a.href=r[1]; a.target="_blank"; a.rel="noopener noreferrer";
+  const strong=document.createElement("strong"); strong.textContent=r[0]; a.append(strong);
+  const small=document.createElement("span"); small.className="small"; small.textContent=r[1];
+  div.append(a,small); box.append(div);
+ });
+}
+function updateBudget(){
+ const ids=["documents","englishCost","registrationCost","travelCost"];
+ const total=ids.reduce((s,id)=>s+Math.max(0,Number(val(id))||0),0);
+ const savings=Math.max(0,Number(val("savings"))||0), target=Math.max(0,Number(val("target"))||0);
+ document.getElementById("totalCost").textContent=money(total);
+ document.getElementById("savingsView").textContent=money(savings);
+ document.getElementById("gap").textContent=money(Math.max(0,total-savings));
+ document.getElementById("remaining").textContent=money(savings-total);
+ document.getElementById("target").title="Target budget: "+money(target);
+}
+function saveFields(){
+ document.querySelectorAll("[data-save]").forEach(el=>data.fields={...(data.fields||{}),[el.id]:el.value});
+ store();
+}
+function loadFields(){
+ document.querySelectorAll("[data-save]").forEach(el=>{
+  if(data.fields && data.fields[el.id]!==undefined) el.value=data.fields[el.id];
+ });
+}
+document.querySelectorAll("[data-save]").forEach(el=>el.addEventListener("change",()=>{
+ saveFields();
+ if(["savings","target","documents","englishCost","registrationCost","travelCost"].includes(el.id)) updateBudget();
+}));
+document.getElementById("country").addEventListener("change",()=>{saveFields();renderTasks();renderResources();});
+document.getElementById("saveBtn").addEventListener("click",()=>{
+ saveFields(); updateBudget();
+ document.getElementById("saveMessage").textContent="Plan saved in this browser on this device.";
+});
+document.getElementById("exportBtn").addEventListener("click",()=>{
+ saveFields();
+ const report=[
+  "MY JAPA PLANNER",
+  "Name: "+(val("name")||"Not entered"),
+  "Target country: "+currentCountry(),
+  "Route: "+val("route"),
+  "Passport: "+val("passport"),
+  "English test: "+val("english"),
+  "Experience: "+val("experience"),
+  "",
+  "CHECKLIST:"
+ ].concat(tasks[currentCountry()].map((t,i)=>(countryTasks()[currentCountry()+"_"+i]?"[x] ":"[ ] ")+t[0]),
+  ["","NEXT ACTION: "+val("nextAction"),"TARGET DATE: "+val("deadline"),"","Budget estimate: "+document.getElementById("totalCost").textContent,"Current savings: "+document.getElementById("savingsView").textContent,"Funding gap: "+document.getElementById("gap").textContent]);
+ const blob=new Blob([report.join("\n")],{type:"text/plain;charset=utf-8"});
+ const url=URL.createObjectURL(blob),a=document.createElement("a");
+ a.href=url;a.download="my-japa-plan.txt";a.click();URL.revokeObjectURL(url);
+});
+document.getElementById("resetBtn").addEventListener("click",()=>{
+ if(confirm("Delete this planner's saved information from this browser?")){
+  try{localStorage.removeItem(key);}catch(e){}
+  data={};location.reload();
+ }
+});
+loadFields();renderTasks();renderResources();updateBudget();
+</script>
+</body>
+</html>
